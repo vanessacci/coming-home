@@ -23,8 +23,8 @@ const NavBar = () => {
         <div className="nav-bar">
         <ul className="nav-list">
             <button onClick={toHome}>Home</button>
-            <button onClick={toLostPage}>Lost Page</button>
-            <button onClick={toFoundPage}>Found Page</button>
+            <button onClick={toLostPage}>Lost Pets</button>
+            <button onClick={toFoundPage}>Found Pets</button>
         </ul>
         </div>
     );
