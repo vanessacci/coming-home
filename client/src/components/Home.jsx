@@ -1,28 +1,14 @@
 import React from "react";
-import { getAuth } from 'firebase/auth';
-import app from '../firebase';
-import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 
 
 function App() {
-    const auth = getAuth(app);
     const navigate = useNavigate();
-    const handleSignIn = async () => {
-        const provider = new GoogleAuthProvider();
-        try {
-            console.log("handling sign in");
-            await signInWithPopup(auth, provider);
-            navigate('/welcome'); 
-        } catch (error) {
-            console.log("Error signing in: ", error);
-        }
-    };
+
     return (
         <div className="app">
             <header className="header">
                 <h1>♥️ Coming Home</h1>
-                <button className="button-37" onClick={handleSignIn}>Log in</button>
             </header>
             <main className="main-content">
                 <section className="introduction">
