@@ -10,6 +10,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/found-form" element={<FoundForm />} />
         <Route path="/lost-form" element={<LostForm />} />
+        {/* <Route path="/lost-page" element={} />
+        <Route path="/found-page" element={} /> */}
       </Routes>
     </Router>
   );
