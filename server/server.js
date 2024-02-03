@@ -1,14 +1,16 @@
 const express = require('express');
 const connectDB = require('./config/db');
 const path = require('path');
-const bodyParser = require("body-parser");
 const app = express();
 const cors = require("cors");
-
+app.use(cors());
 connectDB();
-
 const PORT = process.env.PORT || 8000;
+const lostFormUpload = require('./routes/lostFormUpload');
+app.use(lostFormUpload);
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true })); 
 app.use(express.static(path.join(__dirname, '../client/build')));
 
 app.get('*', (req, res) => {
