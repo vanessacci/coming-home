@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "../stylesheets/newFoundPost.css";
 
 function App() {
-  const apiUrl = process.env.REACT_APP_URL || "http://localhost:3001";
+  const apiUrl = process.env.REACT_APP_URL || "http://localhost:8000";
 
   const navigate = useNavigate();
   const toHome = () => {
