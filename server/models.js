@@ -33,9 +33,12 @@ const foundSchema = new Schema({
     date: Date,
     location: String,
     species: String,
-    userEmail: String,
+    contact: String,
+    description: String,
+    image: String,
     kept: Boolean
 });
+
 const Found = mongoose.model('Found', foundSchema);
 
 module.exports = { User, Lost, Found };
