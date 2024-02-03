@@ -52,7 +52,7 @@ function App() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-  
+
     const formData = {
       petName: event.target.elements['pet-name'].value,
       date: event.target.date.value,
@@ -63,11 +63,11 @@ function App() {
       description: event.target.description.value,
       image: null,
     };
-  
+
     if (event.target.image.files.length > 0) {
       const file = event.target.image.files[0];
       const reader = new FileReader();
-  
+
       reader.onloadend = async () => {
         formData.image = reader.result;
         console.log(formData);
@@ -79,7 +79,7 @@ function App() {
             },
             body: JSON.stringify(formData),
           });
-  
+
           const data = await response.json();
           alert(data.message);
           toHome();
@@ -87,17 +87,16 @@ function App() {
           console.error("Error adding lost form:", error);
         }
       };
-  
+
       // Read as a data URL (base64 string)
       reader.readAsDataURL(file);
     } else {
       console.log("No image uploaded.");
     }
   };
-  
 
   return (
-    <div className="add-expense-container">
+    <div className="add-form-container">
       <header className="form-header">
         <button className="back-button" onClick={toHome}>
           ←
@@ -139,10 +138,22 @@ function App() {
         </select>
 
         <label htmlFor="amount">Phone:</label>
-        <input className="post-input" type="text" name="phone" id="phone" required/>
+        <input
+          className="post-input"
+          type="text"
+          name="phone"
+          id="phone"
+          required
+        />
 
         <label htmlFor="amount">Email:</label>
-        <input className="post-input" type="text" name="email" id="email" required/>
+        <input
+          className="post-input"
+          type="text"
+          name="email"
+          id="email"
+          required
+        />
 
         <label htmlFor="paid">Description</label>
         <input
@@ -153,12 +164,7 @@ function App() {
         />
 
         <label htmlFor="image">Pet Image:</label>
-        <input
-        type="file"
-        id="image"
-        name="image"
-        accept="image/*"
-        />
+        <input type="file" id="image" name="image" accept="image/*" />
 
         <button type="submit" className="submit-button">
           Submit
