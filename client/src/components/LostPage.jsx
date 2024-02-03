@@ -4,8 +4,11 @@ import NavBar from "./NavBar";
 
 function App() {
   const apiUrl = process.env.REACT_APP_URL || "http://localhost:8000";
+//   console.log(apiUrl)
   const navigate = useNavigate();
   const [lostPets, setLostPets] = useState([]);
+  const [showDetails, setShowDetails] = useState({});
+  
   
   const toLostForm = () => {
     navigate("/lost-form");
@@ -13,18 +16,25 @@ function App() {
 
   useEffect(() => {
     fetchLostPets();
-  }, []);
+  });
 
   const fetchLostPets = async () => {
     try {
-      const response = await fetch(`${apiUrl}/api/lostPets`); 
+      const response = await fetch(`${apiUrl}/api/lost/not-found/`); 
       const data = await response.json();
+    //   console.log(data);
       setLostPets(data);
+    //   console.log(lostPets);
     } catch (error) {
       console.error("Failed to fetch lost pets:", error);
     }
   };
-
+  const toggleDetails = (index) => {
+    setShowDetails((prevShowDetails) => ({
+        ...prevShowDetails,
+        [index]: !prevShowDetails[index],
+    }));
+};
 
   return (
     <div className="app">
@@ -34,36 +44,42 @@ function App() {
         <section className="button-container">
           <button onClick={toLostForm} className="form-button">Lost A Pet</button>
         </section>
-        <ul class='pet-ul'>
+        <ul className='pet-ul'>
             {/* map pets class below */}
+            {lostPets.map((pet, index) => (
             <div className="pets"> 
-                <li>
+                <li key={pet._id}>
                     <table><tr>
                         <td>
                             <img
+                            src={pet.image}
+                            alt={pet.petName}
                             style={{ width: '300px', height:'300px'}} 
                             />
                         </td>
                         <td>
-                            <h2>pet name</h2>
-                            <h3>location</h3>
-                            <p>species</p>
-                            <p>last seen date</p>
-                            <button className="detail-button" >
-                            Show Details
+                            <h2>{pet.petName}</h2>
+                            <h3>{pet.location}</h3>
+                            <p>{pet.species}</p>
+                            <p>{pet.location}</p>
+                            <button className="detail-button" onClick={() => toggleDetails(index)}>
+                            {showDetails[index] ? 'Hide Details' : 'Show Details'}
                         </button>
                         {/* write show details function for pet-details class below*/}
+                        {showDetails[index] && (
                         <div className='pet-details'>
                                 <h4>Details</h4>
                                 <ul>
-                                    <li>description</li>
-                                    <li>contact</li>
+                                    <li>{pet.description}</li>
+                                    <li>{pet.email}</li>
+                                    <li>{pet.phone}</li>
                                 </ul>
                             </div>
+                            )}
                         </td>
                     </tr></table>
                 </li>
-            </div>
+            </div>))}
         </ul>
     </div>
   );
