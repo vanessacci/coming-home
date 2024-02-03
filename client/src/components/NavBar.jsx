@@ -10,11 +10,11 @@ const NavBar = () => {
   };
 
   const toLostPage = () => {
-    navigate('/lost-page');
+    navigate('/lost-pets');
   };
 
   const toFoundPage = () => {
-      navigate('/found-page');
+      navigate('/found-pets');
   };
 
 
