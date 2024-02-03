@@ -6,11 +6,12 @@ const cors = require("cors");
 app.use(cors());
 connectDB();
 const PORT = process.env.PORT || 8000;
+app.use(express.json({limit: '50mb'}));
+app.use(express.urlencoded({ limit: '50mb', extended: true })); 
+
 const lostFormUpload = require('./routes/lostFormUpload');
 app.use(lostFormUpload);
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true })); 
 app.use(express.static(path.join(__dirname, '../client/build')));
 
 app.get('*', (req, res) => {
