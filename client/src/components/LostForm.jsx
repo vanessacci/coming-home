@@ -10,46 +10,6 @@ function App() {
     navigate("/");
   };
 
-  /**
-   * Handle for submission for adding an expense and submit a post request to the server
-   * @param {Event} event objevt triggered by the submit button
-   */
-  // const handleSubmit = async (event) => {
-  //   event.preventDefault();
-
-  //   // const formData = {
-  //   //     petName: event.target.
-  //   //   date: event.target.date.value,
-  //   //   // user: user.email,
-  //   //   subject: event.target.subject.value,
-  //   //   category: event.target.category.value,
-  //   //   amount:
-  //   //     parseFloat(event.target.amount.value) *
-  //   //     parseFloat(event.target.paid.value),
-  //   //   friend: event.target.with.value,
-  //   //   completed: false,
-  //   // };
-
-  //   console.log(formData);
-
-  //   // Make a POST request to send form data
-  //   try {
-  //     const response = await fetch(`${apiUrl}/api/lostFormUpload`, {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify(formData),
-  //     });
-
-  //     const data = await response.json();
-  //     alert(data.message);
-  //     toActivity();
-  //   } catch (error) {
-  //     console.error("Error adding expense:", error);
-  //   }
-  // };
-
   const handleSubmit = async (event) => {
     event.preventDefault();
   
@@ -61,39 +21,49 @@ function App() {
       phone: event.target.phone.value,
       email: event.target.email.value,
       description: event.target.description.value,
-      image: null,
     };
   
-    if (event.target.image.files.length > 0) {
+    const submitData = async (imageData) => {
+      if (imageData) {
+        formData.image = imageData;
+      }
+  
+      console.log(formData);
+      try {
+        const response = await fetch(`${apiUrl}/api/lostFormUpload`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        });
+  
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+  
+        const data = await response.json();
+        alert(data.message);
+        toHome();
+      } catch (error) {
+        console.error("Error adding lost form:", error);
+      }
+    };
+  
+    if (event.target.image && event.target.image.files.length > 0) {
       const file = event.target.image.files[0];
       const reader = new FileReader();
   
-      reader.onloadend = async () => {
-        formData.image = reader.result;
-        console.log(formData);
-        try {
-          const response = await fetch(`${apiUrl}/api/lostFormUpload`, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(formData),
-          });
-  
-          const data = await response.json();
-          alert(data.message);
-          toHome();
-        } catch (error) {
-          console.error("Error adding lost form:", error);
-        }
+      reader.onloadend = () => {
+        submitData(reader.result);
       };
   
-      // Read as a data URL (base64 string)
       reader.readAsDataURL(file);
     } else {
-      console.log("No image uploaded.");
+      submitData(null);
     }
   };
+  
   
 
   return (
