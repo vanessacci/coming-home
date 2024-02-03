@@ -1,0 +1,56 @@
+.header {
+    background-color: #fff;
+}
+h1 {
+    margin-left: 50px;
+    width: 280px;
+    height: 80px;
+    padding-top: 30px;
+    text-align: center;
+    border: 5px dotted #FFEBD8;
+    border-radius: 8px;
+}
+
+.main-content {
+    margin-left: 50px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Source: https://getcssscan.com/css-buttons-examples */
+.form-button {
+    background-color: #f49a4c;
+    border-radius: 4px;
+    border-style: none;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Farfetch Basis","Helvetica Neue",Arial,sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.5;
+    margin: 15px;
+    max-width: none;
+    min-height: 44px;
+    min-width: 10px;
+    outline: none;
+    overflow: hidden;
+    padding: 9px 20px 8px;
+    position: relative;
+    text-align: center;
+    text-transform: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: 250px;
+  }
+  
+  .form-button:hover,
+  .form-button:focus {
+    opacity: .75;
+  }

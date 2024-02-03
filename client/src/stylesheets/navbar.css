@@ -8,7 +8,7 @@
     padding: 15px;
     position: sticky;
     top: 0;
-    background-color: #272727;
+    background-color: #FECDA6;
     z-index: 1000;
 }
 
@@ -18,7 +18,7 @@
 }
   
   .nav-list button {
-    color: #f6f4e6;
+    color: #333331;
     background: none;
     border: none;
     font-size: 1.2em;
@@ -37,7 +37,8 @@
   }
   
   .nav-bar button:hover {
-    color: #fddb3a;
+    font-weight: bolder;
+    color: #030303;
   }
   
   
