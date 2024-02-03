@@ -16,11 +16,14 @@ const User = mongoose.model('User', userSchema);
 // Lost pets
 const lostSchema = new Schema({
     petName: String,
-    date: Date,
+    date: String,
     location: String,
     species: String,
-    userEmail: String,
-    status: Boolean
+    phone: String,
+    email: String,
+    description: String,
+    image: String, // Base64 string
+    found:{ type: Boolean, default: false }
 });
 const Lost = mongoose.model('Lost', lostSchema);
 
