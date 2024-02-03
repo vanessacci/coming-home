@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "../stylesheets/newFoundPost.css";
 
 function App() {
-  const apiUrl = process.env.REACT_APP_URL || "http://localhost:3001";
+  const apiUrl = process.env.REACT_APP_URL || "http://localhost:8000";
   const navigate = useNavigate();
 
   const toHome = () => {
@@ -54,7 +54,7 @@ function App() {
     event.preventDefault();
   
     const formData = {
-      petName: event.target.petName.value,
+      petName: event.target.elements['pet-name'].value,
       date: event.target.date.value,
       location: event.target.location.value,
       species: event.target.species.value,
@@ -84,7 +84,7 @@ function App() {
           alert(data.message);
           toHome();
         } catch (error) {
-          console.error("Error adding expense:", error);
+          console.error("Error adding lost form:", error);
         }
       };
   
@@ -102,7 +102,7 @@ function App() {
         <button className="back-button" onClick={toHome}>
           ←
         </button>
-        <h1>If you lost a pet, please fill out the form:</h1>
+        <h2>If you lost a pet, please fill out the form ⬇️</h2>
       </header>
       <form
         className="post-form"
