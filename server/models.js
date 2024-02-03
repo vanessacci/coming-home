@@ -22,7 +22,7 @@ const lostSchema = new Schema({
     userEmail: String,
     status: Boolean
 });
-const Lost = mongoose.model('Lost', lostchema);
+const Lost = mongoose.model('Lost', lostSchema);
 
 // Found pets
 const foundSchema = new Schema({
