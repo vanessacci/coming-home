@@ -16,7 +16,7 @@ app.use(lostFormUpload);
 const lostPets = require('./routes/lostPageData');
 app.use(lostPets);
 
-const foundPets = require('./routes/lostPageData');
+const foundPets = require('./routes/foundPageData');
 app.use(foundPets);
 
 app.use(express.static(path.join(__dirname, '../client/build')));
