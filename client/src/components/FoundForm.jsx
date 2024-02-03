@@ -10,54 +10,109 @@ function App() {
     navigate("/");
   };
 
-  /**
-   * Handle for submission for adding an expense and submit a post request to the server
-   * @param {Event} event object triggered by the submit button
-   */
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     const formData = {
-      petName: event.target.petName.value,
+      petName: event.target.elements['pet-name'].value,
       date: event.target.date.value,
       location: event.target.location.value,
       species: event.target.species.value,
       contact: event.target.contact.value,
       description: event.target.description.value,
       kept: event.target.kept.value,
-      image: null,
     };
-
-    if (event.target.image.files.length > 0) {
+  
+    const submitData = async (imageData) => {
+      if (imageData) {
+        formData.image = imageData;
+      }
+  
+      console.log(formData);
+      try {
+        const response = await fetch(`${apiUrl}/api/found-form-upload`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        });
+  
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+  
+        const data = await response.json();
+        alert(data.message);
+        toHome();
+      } catch (error) {
+        console.error("Error adding lost form:", error);
+      }
+    };
+  
+    if (event.target.image && event.target.image.files.length > 0) {
       const file = event.target.image.files[0];
       const reader = new FileReader();
-
-      reader.onloadend = async () => {
-        formData.image = reader.result;
-
-        // Make a POST request to send form data
-        try {
-          const response = await fetch(`${apiUrl}/api/foundFormUpload`, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(formData),
-          });
-
-          const data = await response.json();
-          alert(data.message);
-          toHome();
-        } catch (error) {
-          console.error("Error adding new post:", error);
-        }
+  
+      reader.onloadend = () => {
+        submitData(reader.result);
       };
-
+  
       reader.readAsDataURL(file);
     } else {
-      console.log("No image uploaded");
+      submitData(null);
     }
   };
+  
+
+  /**
+   * Handle for submission for adding an expense and submit a post request to the server
+   * @param {Event} event object triggered by the submit button
+   */
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault();
+
+  //   const formData = {
+  //     petName: event.target.petName.value,
+  //     date: event.target.date.value,
+  //     location: event.target.location.value,
+  //     species: event.target.species.value,
+  //     contact: event.target.contact.value,
+  //     description: event.target.description.value,
+  //     kept: event.target.kept.value,
+  //     image: null,
+  //   };
+
+  //   if (event.target.image.files.length > 0) {
+  //     const file = event.target.image.files[0];
+  //     const reader = new FileReader();
+
+  //     reader.onloadend = async () => {
+  //       formData.image = reader.result;
+
+  //       // Make a POST request to send form data
+  //       try {
+  //         const response = await fetch(`${apiUrl}/api/found-form-upload`, {
+  //           method: "POST",
+  //           headers: {
+  //             "Content-Type": "application/json",
+  //           },
+  //           body: JSON.stringify(formData),
+  //         });
+
+  //         const data = await response.json();
+  //         alert(data.message);
+  //         toHome();
+  //       } catch (error) {
+  //         console.error("Error adding new post:", error);
+  //       }
+  //     };
+
+  //     reader.readAsDataURL(file);
+  //   } else {
+  //     console.log("No image uploaded");
+  //   }
+  // };
 
   return (
     <div className="add-form-container">
@@ -65,7 +120,7 @@ function App() {
         <button className="back-button" onClick={toHome}>
           ←
         </button>
-        <h1>If you see a lost pet, please fill out the form</h1>
+        <h2>If you see a lost pet, please fill out the form ⬇️</h2>
       </header>
       <form
         className="post-form"
