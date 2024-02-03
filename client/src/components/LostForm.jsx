@@ -12,7 +12,7 @@ function App() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-  
+
     const formData = {
       petName: event.target.elements['pet-name'].value,
       date: event.target.date.value,
@@ -67,7 +67,7 @@ function App() {
   
 
   return (
-    <div className="add-expense-container">
+    <div className="add-form-container">
       <header className="form-header">
         <button className="back-button" onClick={toHome}>
           ←
@@ -109,10 +109,22 @@ function App() {
         </select>
 
         <label htmlFor="amount">Phone:</label>
-        <input className="post-input" type="text" name="phone" id="phone" required/>
+        <input
+          className="post-input"
+          type="text"
+          name="phone"
+          id="phone"
+          required
+        />
 
         <label htmlFor="amount">Email:</label>
-        <input className="post-input" type="text" name="email" id="email" required/>
+        <input
+          className="post-input"
+          type="text"
+          name="email"
+          id="email"
+          required
+        />
 
         <label htmlFor="paid">Description</label>
         <input
@@ -123,12 +135,7 @@ function App() {
         />
 
         <label htmlFor="image">Pet Image:</label>
-        <input
-        type="file"
-        id="image"
-        name="image"
-        accept="image/*"
-        />
+        <input type="file" id="image" name="image" accept="image/*" />
 
         <button type="submit" className="submit-button">
           Submit
