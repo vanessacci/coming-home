@@ -11,8 +11,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/found-form" element={<FoundForm />} />
         <Route path="/lost-form" element={<LostForm />} />
-        <Route path="/lost-page" element={<LostPage />} />
-        {/* <Route path="/found-page" element={} /> */}
+        <Route path="/lost-pets" element={<LostPage />} />
+        {/* <Route path="/found-pets" element={} /> */}
       </Routes>
     </Router>
   );
