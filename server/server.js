@@ -11,7 +11,9 @@ app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
 // routes
 const lostFormUpload = require('./routes/lostFormUpload');
+const foundFormUpload = require('./routes/foundFormUpload');
 app.use(lostFormUpload);
+app.use(foundFormUpload);
 
 const lostPets = require('./routes/lostPageData');
 app.use(lostPets);
