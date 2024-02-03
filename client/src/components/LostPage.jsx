@@ -1,14 +1,30 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import NavBar from "./NavBar";
 
 function App() {
   const apiUrl = process.env.REACT_APP_URL || "http://localhost:8000";
   const navigate = useNavigate();
-
+  const [lostPets, setLostPets] = useState([]);
+  
   const toLostForm = () => {
     navigate("/lost-form");
   };
+
+  useEffect(() => {
+    fetchLostPets();
+  }, []);
+
+  const fetchLostPets = async () => {
+    try {
+      const response = await fetch(`${apiUrl}/api/lostPets`); 
+      const data = await response.json();
+      setLostPets(data);
+    } catch (error) {
+      console.error("Failed to fetch lost pets:", error);
+    }
+  };
+
 
   return (
     <div className="app">
