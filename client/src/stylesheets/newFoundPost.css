@@ -1,0 +1,129 @@
+.app {
+    font-family: Arial, sans-serif;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #f5f5f5;
+  }
+  
+  .login-button {
+    padding: 10px 20px;
+    background-color: #A9A9A9;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+  }
+  
+  .main-content {
+    padding: 20px;
+  }
+  
+  .introduction h2 {
+    margin-bottom: 10px;
+  }
+  
+  .notes {
+    color: #888;
+    font-style: italic;
+  }
+  
+  /***************** Add Expense *************/
+
+/* App.css */
+.add-expense-container {
+  font-family: 'Arial', sans-serif;
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.back-button, .submit-button {
+  padding: 10px 15px;
+  background-color: #A9A9A9;
+  border: none;
+  border-radius: 15px; /* Round angles for buttons */
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.back-button {
+  background-color: #D3D3D3; /* Lighter grey for the back button */
+}
+
+.submit-button {
+  background-color: #4CAF50; /* Green color for the submit button */
+}
+
+.post-form {
+  display: grid;
+  gap: 10px;
+  text-align: left;
+}
+
+.post-form label {
+  display: block;
+  margin-bottom: .5rem;
+  color: #333;
+}
+
+.post-form input,
+.post-form select {
+  width: 600px;
+  padding: 10px;
+  margin: 0 0 15px 0;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  text-align: left !important;
+}
+
+/* This targets all text inputs and selects except for the 'status' select */
+.post-form input:not([type='submit']),
+.post-form select:not(.status-select) {
+  background-color: #f7f7f7;
+}
+
+/* Specific styles for the status select dropdown */
+.status-select {
+  background-color: #e9ecef;
+}
+
+.notes {
+  font-size: 0.85em;
+  color: #6c757d;
+  margin-top: 20px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .add-expense-container {
+    padding: 10px;
+  }
+
+  .form-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .back-button, .submit-button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
+
+.post-input{
+  width: 580px !important;
+}
