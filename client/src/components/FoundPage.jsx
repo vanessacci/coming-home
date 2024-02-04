@@ -8,7 +8,10 @@ function App() {
     const apiUrl = process.env.REACT_APP_URL || "http://localhost:8000";
     const navigate = useNavigate();
           // //test data
-
+    const [selectedItem, setSelectedItem] = useState(null);
+    const [selectedSpecies, setSelectedSpecies] = useState(null);
+    const [dateRange, setDateRange] = useState({ from: "", to: "" });
+    
     const [foundData, setFoundData] = useState([
       //       { id: 1, petName: 'Dog 1', date: '2022-01-01', location: 'Park', species: 'dog', contact: '123456', description: 'Found a dog', kept: 'no', image: 'dog1.jpg' },
       // { id: 2, petName: 'Cat 2', date: '2022-02-01', location: 'Street', species: 'cat', contact: '654321', description: 'Found a cat', kept: 'yes', image: 'cat1.jpg' },
@@ -20,7 +23,6 @@ function App() {
     const toFoundForm = () => {
       navigate("/found-form");
     };
-    const [selectedItem, setSelectedItem] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 4;
       // Function to fetch all found information
@@ -33,6 +35,13 @@ function App() {
         } catch (error) {
         console.error("Error fetching found data:", error);
         }
+    };
+
+    const handleClear = () => {
+      // Clear filters by resetting selectedSpecies and dateRange
+      setSelectedSpecies(null);
+      setDateRange({ from: "", to: "" });
+      fetchFoundData();
     };
     useEffect(() => {
         // Fetch found data when the component mounts
@@ -51,16 +60,70 @@ function App() {
       // Toggle details visibility for the selected item
       setSelectedItem(selectedItem === item ? null : item);
     };
+    const handleSpeciesChange = (event) => {
+      setSelectedSpecies(event.target.value);
+    };
+    const handleDateFromChange = (event) => {
+      setDateRange({ ...dateRange, from: event.target.value });
+    };
+  
+    const handleDateToChange = (event) => {
+      setDateRange({ ...dateRange, to: event.target.value });
+    };
+    const isDateInRange = (date) => {
+      if (!dateRange.from && !dateRange.to) {
+        return true; // No date range filter
+      }
+  
+      const fromDate = dateRange.from ? new Date(dateRange.from) : null;
+      const toDate = dateRange.to ? new Date(dateRange.to) : null;
+      const itemDate = new Date(date);
+  
+      if (fromDate && toDate) {
+        return itemDate >= fromDate && itemDate <= toDate;
+      } else if (fromDate) {
+        return itemDate >= fromDate;
+      } else if (toDate) {
+        return itemDate <= toDate;
+      }
+  
+      return true;
+    };
 
+    const filteredData = foundData
+    .filter((item) => !selectedSpecies || item.species === selectedSpecies)
+    .filter((item) => isDateInRange(item.date));
+
+    
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const currentItems = foundData.slice(indexOfFirstItem, indexOfLastItem);
+    const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
     return (
       <div className="app">
       <NavBar></NavBar>
       <h2>These pets are found!</h2>
         <section className="button-container">
           <button onClick={toFoundForm} className="form-button">Found A Pet</button>
+        </section>
+        <section className = "filters-container">
+        <label>
+          Select Species:
+          <select onChange={handleSpeciesChange} value={selectedSpecies || ''}>
+            <option value="">All</option>
+            <option value="dog">Dog</option>
+            <option value="cat">Cat</option>
+            <option value="other">Other</option>
+          </select>
+        </label>
+        <label>
+          Date Range:
+          <input type="date" value={dateRange.from} onChange={handleDateFromChange} />
+          <span> to </span>
+          <input type="date" value={dateRange.to} onChange={handleDateToChange} />
+        </label>
+        <button onClick={handleClear} className="filter-button">
+          Clear
+        </button>
         </section>
         <main className="main-content">
             <section className="found-info">
