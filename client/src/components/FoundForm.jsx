@@ -14,7 +14,7 @@ function App() {
     event.preventDefault();
 
     const formData = {
-      petName: event.target.elements['pet-name'].value,
+      petName: event.target.elements["pet-name"].value,
       date: event.target.date.value,
       location: event.target.location.value,
       species: event.target.species.value,
@@ -22,12 +22,12 @@ function App() {
       description: event.target.description.value,
       kept: event.target.kept.value,
     };
-  
+
     const submitData = async (imageData) => {
       if (imageData) {
         formData.image = imageData;
       }
-  
+
       console.log(formData);
       try {
         const response = await fetch(`${apiUrl}/api/found-form-upload`, {
@@ -37,11 +37,11 @@ function App() {
           },
           body: JSON.stringify(formData),
         });
-  
+
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-  
+
         const data = await response.json();
         alert(data.message);
         toHome();
@@ -49,21 +49,20 @@ function App() {
         console.error("Error adding lost form:", error);
       }
     };
-  
+
     if (event.target.image && event.target.image.files.length > 0) {
       const file = event.target.image.files[0];
       const reader = new FileReader();
-  
+
       reader.onloadend = () => {
         submitData(reader.result);
       };
-  
+
       reader.readAsDataURL(file);
     } else {
       submitData(null);
     }
   };
-  
 
   /**
    * Handle for submission for adding an expense and submit a post request to the server
