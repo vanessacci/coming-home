@@ -149,6 +149,7 @@ function App() {
 
         <label htmlFor="species">Species:</label>
         <select id="species" name="species">
+          <option value=""></option>
           <option value="dog">dog</option>
           <option value="cat">cat</option>
           <option value="others">others</option>
