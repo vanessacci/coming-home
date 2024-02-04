@@ -7,14 +7,15 @@ import NavBar from "./NavBar";
 function App() {
     const apiUrl = process.env.REACT_APP_URL || "http://localhost:8000";
     const navigate = useNavigate();
+          // //test data
+
     const [foundData, setFoundData] = useState([
-      //test data
-      { id: 1, petName: 'Dog 1', date: '2022-01-01', location: 'Park', species: 'dog', contact: '123456', description: 'Found a dog', kept: 'no', image: 'dog1.jpg' },
-      { id: 2, petName: 'Cat 2', date: '2022-02-01', location: 'Street', species: 'cat', contact: '654321', description: 'Found a cat', kept: 'yes', image: 'cat1.jpg' },
-      { id: 3, petName: 'Dog 3', date: '2022-03-01', location: 'Beach', species: 'dog', contact: '987654', description: 'Found another dog', kept: 'no', image: 'dog2.jpg' },
-      { id: 4, petName: 'Cat 4', date: '2022-04-01', location: 'Garden', species: 'cat', contact: '111222', description: 'Found another cat', kept: 'yes', image: 'cat2.jpg' },
-      { id: 5, petName: 'Cat 5', date: '2022-04-01', location: 'Garden', species: 'cat', contact: '111222', description: 'Found another cat', kept: 'yes', image: 'cat2.jpg' },
-      { id: 6, petName: 'Cat 6', date: '2022-04-01', location: 'Garden', species: 'cat', contact: '111222', description: 'Found another cat', kept: 'yes', image: 'cat2.jpg' },
+      //       { id: 1, petName: 'Dog 1', date: '2022-01-01', location: 'Park', species: 'dog', contact: '123456', description: 'Found a dog', kept: 'no', image: 'dog1.jpg' },
+      // { id: 2, petName: 'Cat 2', date: '2022-02-01', location: 'Street', species: 'cat', contact: '654321', description: 'Found a cat', kept: 'yes', image: 'cat1.jpg' },
+      // { id: 3, petName: 'Dog 3', date: '2022-03-01', location: 'Beach', species: 'dog', contact: '987654', description: 'Found another dog', kept: 'no', image: 'dog2.jpg' },
+      // { id: 4, petName: 'Cat 4', date: '2022-04-01', location: 'Garden', species: 'cat', contact: '111222', description: 'Found another cat', kept: 'yes', image: 'cat2.jpg' },
+      // { id: 5, petName: 'Cat 5', date: '2022-04-01', location: 'Garden', species: 'cat', contact: '111222', description: 'Found another cat', kept: 'yes', image: 'cat2.jpg' },
+      // { id: 6, petName: 'Cat 6', date: '2022-04-01', location: 'Garden', species: 'cat', contact: '111222', description: 'Found another cat', kept: 'yes', image: 'cat2.jpg' },
     ]);
     const toFoundForm = () => {
       navigate("/found-form");
@@ -25,8 +26,9 @@ function App() {
       // Function to fetch all found information
     const fetchFoundData = async () => {
         try {
-        const response = await fetch(`${apiUrl}/api/getAllFoundData`);
+        const response = await fetch(`${apiUrl}/api/foundPets`);
         const data = await response.json();
+        console.log(data);
         setFoundData(data);
         } catch (error) {
         console.error("Error fetching found data:", error);

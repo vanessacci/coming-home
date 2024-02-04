@@ -36,7 +36,8 @@ const foundSchema = new Schema({
     contact: String,
     description: String,
     image: String,
-    kept: Boolean
+    kept: Boolean,
+    homed:{ type: Boolean, default: false }
 });
 
 const Found = mongoose.model('Found', foundSchema);

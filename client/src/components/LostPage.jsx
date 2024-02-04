@@ -22,7 +22,7 @@ function App() {
     try {
       const response = await fetch(`${apiUrl}/api/lost/not-found/`); 
       const data = await response.json();
-    //   console.log(data);
+      console.log(data);
       setLostPets(data);
     //   console.log(lostPets);
     } catch (error) {
