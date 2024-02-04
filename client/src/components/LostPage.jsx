@@ -9,7 +9,6 @@ function App() {
     const navigate = useNavigate();
     const [lostPets, setLostPets] = useState([]);
     const [showDetails, setShowDetails] = useState({});
-    const [selectedItem, setSelectedItem] = useState(null);
     const [selectedSpecies, setSelectedSpecies] = useState(null);
     const [dateRange, setDateRange] = useState({ from: "", to: "" });
     const [currentPage, setCurrentPage] = useState(1);
