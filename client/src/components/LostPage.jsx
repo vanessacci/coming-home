@@ -144,6 +144,7 @@ const handlePageChange = (newPage) => {
                         <td>
                             <h2>{pet.petName}</h2>
                             <h3>Last seen in {pet.location}</h3>
+                            <p>Date: {pet.date}</p>
                             <p>Species: {pet.species}</p>
                             </td>
                         <td>
