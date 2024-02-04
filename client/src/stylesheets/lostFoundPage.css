@@ -1,0 +1,133 @@
+/* Center the table container */
+.pets {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.pet-ul {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0;
+    margin: 0;
+}
+
+table {
+    border-collapse: collapse;
+    margin: 0 auto; /* Center table */
+}
+
+td {
+    vertical-align: top; /* Align content to the top */
+    text-align: left; /* Align text to the left */
+    padding: 8px; /* Add some padding for spacing */
+}
+
+/* Fix column sizes. Adjust widths as needed */
+td:first-child {
+    width: 600px; /* Width of the column with the image */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+td:nth-child(2) {
+    width: 300px; /* Width of the column with the pet details */
+}
+td:last-child {
+    width: 500px; /* Width of the column with the pet details */
+}
+
+/* Style for the detail button */
+.detail-button {
+    cursor: pointer;
+    padding: 5px 10px;
+    margin-top: 10px;
+    background-color: #aa6d11;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+.detail-button:hover {
+    background-color: #ecdac4;
+    color:#332105;
+}
+
+/* Style for the pet details section */
+.pet-details {
+    margin-top: 10px;
+    padding: 20px 50px 50px 50px;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+}
+
+/* Ensure images do not exceed their cell's width */
+img {
+    display: block;
+    max-width: 600px;
+    max-height: 400px;;
+}
+
+.pageInfo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.filters-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; /* Adjust based on your layout */
+    margin-bottom: 20px;
+  }
+  
+  .filters-container label {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between label text and input/select */
+  }
+  
+  .filters-container select,
+  .filters-container input[type="date"] {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .filter-button {
+    padding: 5px 15px;
+    background-color: #aa6d11;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .filter-button:hover {
+    background-color: #ecdac4;
+    color:#332105;
+  }
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 10px; /* Space between buttons */
+  }
+  
+  .pagination button {
+    padding: 5px 10px;
+    background-color: #f0f0f0;
+    border: 1px solid #d4d4d4;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .pagination button:hover {
+    background-color: #e2e2e2;
+  }
+  
+  .pagination button.active {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+  }
+  

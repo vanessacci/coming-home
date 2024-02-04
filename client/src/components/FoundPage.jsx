@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate,  } from "react-router-dom";
-//import "../stylesheets/XXX.css";
+import "../stylesheets/lostFoundPage.css";
 import NavBar from "./NavBar";
 
 
@@ -101,7 +101,7 @@ function App() {
     return (
       <div className="app">
       <NavBar></NavBar>
-      <h2>These pets are found!</h2>
+      <h2 className='pageInfo'>These pets are found! Please help to find their owners.</h2>
         <section className="button-container">
           <button onClick={toFoundForm} className="form-button">Found A Pet</button>
         </section>
@@ -127,9 +127,9 @@ function App() {
         </section>
         <main className="main-content">
             <section className="found-info">
-            <h2>Found Information</h2>
-            <ul>
+            <ul className='pet-ul'>
             {currentItems.map((foundItem) => (
+              <div className="pets"> 
                 <li key={foundItem.id}>
                 <table>
                     <tbody>
@@ -148,7 +148,9 @@ function App() {
                             <h3>Location: {foundItem.location}</h3>
                             <p>Species: {foundItem.species}</p>
                             <p>Last seen date: {foundItem.date}</p>
-                            <p>Kept: {foundItem.kept}</p>
+                            <p>Is he/her with the finder now? : {foundItem.kept}</p>
+                            </td>
+                        <td>
                             <button className="detail-button" onClick={() => handleShowDetails(foundItem)}>
                           {selectedItem === foundItem ? "Hide Details" : "Show Details"}
                         </button>
@@ -167,7 +169,7 @@ function App() {
                     </tbody>
                 </table>
                 </li>
-            ))}
+                </div>))}
             </ul>
             <div className="pagination">
             {Array.from({ length: Math.ceil(foundData.length / itemsPerPage) }, (_, index) => (

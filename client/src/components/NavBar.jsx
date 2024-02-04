@@ -21,6 +21,7 @@ const NavBar = () => {
 
   return(
         <div className="nav-bar">
+            <img src='comingHomeLogo.png' className='logo'/>
         <ul className="nav-list">
             <button onClick={toHome}>Home</button>
             <button onClick={toLostPage}>Lost Pets</button>

@@ -17,28 +17,30 @@
     justify-content: space-between;
 }
   
-  .nav-list button {
-    color: #333331;
-    background: none;
-    border: none;
-    font-size: 1.2em;
-    text-transform: uppercase;
-    font-weight: 500;
-    margin-right: 10px;
-    transition: color 0.2s ease-in-out;
-    cursor: pointer;
-    /* flex: 1; Allocate equal space to each button */
-    text-align: center;
-    padding: 10px 15px; /* Adjust padding to control button size */
-  }
+.nav-list button {
+  color: #333331;
+  background: none;
+  border: none;
+  font-size: 1.2em;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-right: 10px;
+  transition: color 0.2s ease-in-out;
+  cursor: pointer;
+  /* flex: 1; Allocate equal space to each button */
+  text-align: center;
+  padding: 10px 15px; /* Adjust padding to control button size */
+}
+
+.nav-list button:last-child {
+  margin-right: 0; /* No margin for the last button */
+}
+
+.nav-bar button:hover {
+  font-weight: bolder;
+  color: #030303;
+}
   
-  .nav-list button:last-child {
-    margin-right: 0; /* No margin for the last button */
-  }
-  
-  .nav-bar button:hover {
-    font-weight: bolder;
-    color: #030303;
-  }
-  
-  
+.logo {
+  max-height: 90px;
+}
