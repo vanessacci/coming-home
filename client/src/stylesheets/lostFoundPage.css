@@ -20,11 +20,12 @@ td {
     vertical-align: top; /* Align content to the top */
     text-align: left; /* Align text to the left */
     padding: 8px; /* Add some padding for spacing */
+    min-height: 400px;
 }
 
 /* Fix column sizes. Adjust widths as needed */
 td:first-child {
-    width: 600px; /* Width of the column with the image */
+    width: 650px; /* Width of the column with the image */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -63,7 +64,7 @@ td:last-child {
 img {
     display: block;
     max-width: 600px;
-    max-height: 400px;;
+    max-height: 450px;;
 }
 
 .pageInfo {
