@@ -132,3 +132,13 @@ img {
     border-color: #007bff;
   }
   
+.app h2, h3, h4 {
+  font-family: 'Noto Color Emoji', 'Kanit', sans-serif;
+}
+.app {
+  font-family: 'Montserrat', sans-serif;
+}
+
+button {
+  font-family: 'Kanit', sans-serif;
+}
