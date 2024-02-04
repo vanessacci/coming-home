@@ -173,7 +173,7 @@ function App() {
                             Last seen date: {formateDateStr(foundItem.date)}
                           </p>
                           <p>
-                            Is he/her with the finder now? : {foundItem.kept}
+                            Still with finder? : {foundItem.kept ? "Yes" : "No"}
                           </p>
                         </td>
                         <td>
