@@ -103,7 +103,7 @@ const handlePageChange = (newPage) => {
     <div className="app">
 
         <NavBar></NavBar>
-        <h2 className='pageInfo'>These pets are lost, please help to find them!</h2>
+        <h2 className='pageInfo'>These pets are lost😢 Please help to find them!</h2>
         <section className="button-container">
           <button onClick={toLostForm} className="form-button">Lost A Pet</button>
         </section>

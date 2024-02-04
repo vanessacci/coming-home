@@ -77,7 +77,7 @@ img {
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px; /* Adjust based on your layout */
-    margin-bottom: 20px;
+    margin: 20px;
   }
   
   .filters-container label {
