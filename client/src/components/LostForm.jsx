@@ -69,9 +69,13 @@ function App() {
   return (
     <div className="add-form-container">
       <header className="form-header">
-        <button className="back-button" onClick={toHome}>
-          ←
-        </button>
+        
+        <span className="material-symbols-outlined" onClick={toHome}>
+          
+        arrow_back
+        {/* <button className="back-button" onClick={toHome}>
+        </button> */}
+        </span>
         <h2>If you lost a pet, please fill out the form ⬇️</h2>
       </header>
       <form

@@ -3,12 +3,14 @@
 }
 h1 {
     margin-left: 50px;
-    width: 280px;
-    height: 80px;
-    padding-top: 30px;
+    width: 20%;
+    height: 30%;
+    padding: 30px;
     text-align: center;
     border: 5px dotted #FFEBD8;
     border-radius: 8px;
+    font-family: 'Noto Color Emoji', 'Diphylleia', serif;
+    font-size: 3em;
 }
 
 .main-content {
@@ -30,8 +32,8 @@ h1 {
     color: #fff;
     cursor: pointer;
     display: inline-block;
-    font-family: "Farfetch Basis","Helvetica Neue",Arial,sans-serif;
-    font-size: 16px;
+    font-family: 'Kanit', sans-serif;
+    font-size: 20px;
     font-weight: 700;
     line-height: 1.5;
     margin: 15px;
@@ -53,4 +55,9 @@ h1 {
   .form-button:hover,
   .form-button:focus {
     opacity: .75;
+  }
+
+  .introduction {
+    font-family: 'Noto Color Emoji', 'Montserrat', sans-serif;
+    
   }
